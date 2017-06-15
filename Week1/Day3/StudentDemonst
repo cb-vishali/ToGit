@@ -1,0 +1,117 @@
+
+package studentdemonst;
+import java.util.*;
+
+class Student {
+    String name,gend;int Id;boolean gender;
+    Scanner sc=new Scanner(System.in);
+    Subject s=new Subject();
+    void setName() {
+        System.out.println("Enter name:");
+        name=sc.next();
+    }
+    void setId()
+    {
+        System.out.println("Enter Id:");
+        Id=sc.nextInt();
+    }
+    void setGender()
+    {
+        System.out.println("Enter gender(true-fem / false-male) :");
+        gender=sc.nextBoolean();
+        if(gender==true)
+        {
+           gend="female"; 
+        }else
+        {
+           gend="male";
+        }
+    }
+    int getId() {
+     return Id;   
+    }
+    String getName() {
+        return name;
+    }
+    Boolean getGender() {
+        return gender;
+    }
+    void setMarks()
+    {
+       s.setMark1();
+       s.setMark2();
+       s.setMark3();
+    }
+    
+    Subject getMarks() {
+        return s;
+    }
+    
+}
+class Subject {
+    
+    Scanner sc=new Scanner(System.in);
+    String sub1,sub2,sub3; float mark1,mark2,mark3;
+    void setMark1()
+    {
+        System.out.println("Enter sub1 and mark1:");
+        sub1=sc.next();
+        mark1=sc.nextFloat();
+    }
+    void setMark2()
+    {
+        System.out.println("Enter sub2 and mark2:");
+        sub2=sc.next();
+        mark2=sc.nextFloat();
+    }
+    void setMark3()
+    {
+        System.out.println("Enter sub3 and mark3:");
+        sub3=sc.next();
+        mark3=sc.nextFloat();
+    }
+    float getMark1()
+    {
+       return mark1; 
+    }
+    float getMark2()
+    {
+       return mark2; 
+    }
+    float getMark3()
+    {
+       return mark3; 
+    }
+    
+}
+
+class ResultGenerate {
+    
+    static void calculateResult(Student s1)
+    {
+        float total,average;
+        total=s1.getMarks().getMark1()+s1.getMarks().getMark2()+s1.getMarks().getMark3();
+        average=total/3;
+        System.out.println ("Total : "+total+" Average : "+average);
+    }
+    
+}
+public class StudentDemonst {
+
+    Scanner sc=new Scanner(System.in);
+    
+    public static void storeInputData(Student s1)
+                {
+                   s1.setName();
+                   s1.setId();
+                   s1.setGender();
+                   s1.setMarks();
+                }
+    
+   public static void main(String[] args) {
+       
+               Student stud1=new Student();
+               storeInputData(stud1);
+               ResultGenerate.calculateResult(stud1);
+         }
+   }

@@ -1,0 +1,267 @@
+
+package specieslaunch;
+import java.util.*;
+
+interface herbivore
+{
+    
+}
+interface omnivore
+{
+    
+}
+interface carnivore
+{
+    
+}
+/*interface run
+{
+    
+}
+interface fly
+{
+    
+}
+interface walk
+{
+    
+}*/
+
+class Animal
+{
+   void movement()
+   {
+       System.out.println("I used to Walk");
+   }
+}
+class Mammal
+{
+    void movement()
+   {
+       System.out.println("I used to Walk");
+   }
+}
+class Bird
+{
+    void movement()
+   {
+       System.out.println("I used to Fly");
+   }
+}
+
+class bat extends Mammal implements carnivore
+{
+    String name;
+    bat(String name)
+    {
+        this.name=name;
+    }
+}
+
+class dog extends Animal implements carnivore 
+{
+    String name;
+    dog(String name)
+    {
+     this.name=name;
+    }
+    @Override
+    void movement()
+   {
+       System.out.println("I used to Walk sometimes or Run sometimes..");
+   }
+}
+
+class cow extends Animal implements herbivore
+{
+    String name;
+    cow(String name)
+    {
+       this.name=name; 
+    }
+}
+
+class ostrich extends Bird implements omnivore
+{
+    String name;
+    ostrich(String name)
+    {
+     this.name=name;   
+    }
+    @Override
+    void movement()
+   {
+       System.out.println("I used to Walk sometimes or Run sometimes..Even I can Fly");
+   }
+}
+
+class parrot extends Bird implements herbivore
+{
+    String name;
+    parrot(String name)
+    {
+        this.name=name;
+    }
+}
+
+public class SpeciesLaunch {
+
+    
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        ArrayList<Object> species=new ArrayList<Object> ();
+        
+       System.out.println("Which specie you want to add to the list?"
+               + "1)Dog 2)Bat 3)Cow 4)Ostrich 5)Parrot");
+       
+       int input=sc.nextInt();String yesNo="yes";
+       
+       while(!("no".equals(yesNo)))
+       {
+       switch(input)
+       {
+           case 1:
+               Animal dogOb=new dog("Dog");
+               species.add(dogOb);
+               break;
+           case 2:
+               Mammal batOb=new bat("Bat");
+               species.add(batOb);
+               break;
+           case 3:
+               Animal cowOb=new cow("Cow");
+               species.add(cowOb);
+               break;
+           case 4:
+               Bird ostrichOb=new ostrich("Ostrich");
+               species.add(ostrichOb);
+               break;
+           case 5:
+               Bird parrotOb=new parrot("Parrot");
+               species.add(parrotOb);
+               break;
+           default:
+               System.out.println("If you want to add specie apart from the list..plzz first modify the code..and then try..");
+               break;
+       }
+        
+       
+       
+       System.out.println("Do you want to add one more specie?(yes/no)");
+       yesNo=sc.next();
+       if("yes".equals(yesNo))
+       {
+           System.out.println("Which specie you want to add to the list?"
+               + "1)Dog 2)Bat 3)Cow 4)Ostrich 5)Parrot");
+           input=sc.nextInt();
+       }
+       
+       }
+       
+       
+       for(int i=0;i<species.size();i++)
+       {
+           if(species.get(i) instanceof dog)
+           {
+               System.out.println("I am a "+((dog)species.get(i)).name+" and ");
+               ((dog)(species.get(i))).movement();
+           }
+           else if(species.get(i) instanceof bat)
+           {
+               System.out.println("I am a "+((bat)(species.get(i))).name+" and ");
+               ((bat)species.get(i)).movement();
+           }
+           else if(species.get(i) instanceof cow)
+           {
+               System.out.println("I am a "+((cow)species.get(i)).name+" and ");
+               ((cow)species.get(i)).movement();
+           }
+           else if(species.get(i) instanceof ostrich)
+           {
+               System.out.println("I am a "+((ostrich)species.get(i)).name+" and ");
+               ((ostrich)species.get(i)).movement();
+           }
+           else 
+           {
+               System.out.println("I am a "+((parrot)species.get(i)).name+" and ");
+               ((parrot)species.get(i)).movement();
+           }
+           
+           
+           if(species.get(i) instanceof herbivore)
+               {
+                   System.out.println("and herbivore too");
+               }else if(species.get(i) instanceof omnivore)
+               {
+                   System.out.println(" and omnivore too");
+               }else if(species.get(i) instanceof carnivore)
+               {
+                   System.out.println(" and carnivore too");
+               }
+       }
+       
+    }
+    
+}
+
+
+
+
+/******
+
+Output
+------
+
+debug:
+Which specie you want to add to the list?1)Dog 2)Bat 3)Cow 4)Ostrich 5)Parrot
+1
+Do you want to add one more specie?(yes/no)
+yes
+Which specie you want to add to the list?1)Dog 2)Bat 3)Cow 4)Ostrich 5)Parrot
+3
+Do you want to add one more specie?(yes/no)
+yes
+Which specie you want to add to the list?1)Dog 2)Bat 3)Cow 4)Ostrich 5)Parrot
+4
+Do you want to add one more specie?(yes/no)
+yes
+Which specie you want to add to the list?1)Dog 2)Bat 3)Cow 4)Ostrich 5)Parrot
+2
+Do you want to add one more specie?(yes/no)
+yes
+Which specie you want to add to the list?1)Dog 2)Bat 3)Cow 4)Ostrich 5)Parrot
+5
+Do you want to add one more specie?(yes/no)
+yes
+Which specie you want to add to the list?1)Dog 2)Bat 3)Cow 4)Ostrich 5)Parrot
+3
+Do you want to add one more specie?(yes/no)
+yes
+Which specie you want to add to the list?1)Dog 2)Bat 3)Cow 4)Ostrich 5)Parrot
+3
+Do you want to add one more specie?(yes/no)
+no
+I am a Dog and 
+I used to Walk sometimes or Run sometimes..
+ and carnivore too
+I am a Cow and 
+I used to Walk
+and herbivore too
+I am a Ostrich and 
+I used to Walk sometimes or Run sometimes..Even I can Fly
+ and omnivore too
+I am a Bat and 
+I used to Walk
+ and carnivore too
+I am a Parrot and 
+I used to Fly
+and herbivore too
+I am a Cow and 
+I used to Walk
+and herbivore too
+I am a Cow and 
+I used to Walk
+and herbivore too
+BUILD SUCCESSFUL (total time: 28 seconds)
+
+******/

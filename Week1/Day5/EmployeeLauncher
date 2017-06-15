@@ -1,0 +1,200 @@
+
+package employeelauncher;
+import java.util.*;
+import java.util.Collections;
+        
+class Employee
+{
+    Scanner sc=new Scanner(System.in);
+    int age;String name;double salary;
+    
+    interface EmployeeIntf
+    {
+        void setName(String name);
+        void setAge(int age);
+        void setSalary(double salary);
+        String getName();
+        int getAge();
+        double getSalary();
+    }
+ 
+    void access()
+    {
+    
+    EmployeeIntf empl=new EmployeeIntf()
+    {
+    public void setName(String name)
+    {
+        Employee.this.name=name;
+    }
+    public void setAge(int age)
+    {
+        Employee.this.age=age;
+    }
+    public void setSalary(double salary)
+    {
+        Employee.this.salary=salary;
+    }
+    public String getName()
+    {
+        return Employee.this.name;
+    }
+    public int getAge()
+    {
+        return Employee.this.age;
+    }
+    public double getSalary()
+    {
+        return Employee.this.salary;
+    }
+      };
+    
+           System.out.println("Enter employee detail ->");
+           System.out.println("Employee Name:");
+           name=sc.next();
+           
+           System.out.println("Employee Age:");
+           age=sc.nextInt();
+           
+           System.out.println("Employee Salary:");
+           salary=sc.nextDouble();
+    
+    empl.setName(name);
+    empl.setAge(age);
+    empl.setSalary(salary);
+  }
+}
+
+
+class NameComparator implements Comparator<Employee>
+{
+    public int compare(Employee E1,Employee E2)
+    {
+        return E1.name.compareTo(E2.name);
+    }
+}
+
+
+class AgeComparator implements Comparator<Employee>
+{
+    public int compare(Employee E1,Employee E2)
+    {
+        if(E1.age==E2.age)
+            return 0;
+        else if (E1.age>E2.age)
+            return 1;
+        else
+            return -1;
+    }
+}
+
+
+class SalaryComparator implements Comparator<Employee>
+{
+ public int compare(Employee E1,Employee E2)
+ {
+     if(E1.salary==E2.salary)
+         return 0;
+     else if(E1.salary>E2.salary)
+         return 1;
+     else
+         return -1;
+  }
+}
+
+
+
+
+
+
+
+public class EmployeeLauncher {
+
+   public static void main(String[] args) {
+       
+        Scanner sc=new Scanner(System.in);
+       
+        String name;int age;double salary;
+        
+        Employee[] emp=new Employee[3];
+        
+        ArrayList<Employee> empList=new ArrayList<Employee> ();
+        
+        for(int i=0;i<3;i++)
+        {
+           emp[i]=new Employee();
+        
+           emp[i].access();
+           
+           empList.add(emp[i]);
+        }
+        
+        System.out.println("Sorted By Name:");
+        Collections.sort(empList, new NameComparator());
+        for(Employee e : empList)
+        {
+            System.out.println("Name: "+e.name+" Age: "+e.age+" Salary: "+e.salary);
+        }
+        
+        System.out.println("Sorted By Age:");
+        Collections.sort(empList, new AgeComparator());
+        for(Employee e : empList)
+        {
+            System.out.println("Name: "+e.name+" Age: "+e.age+" Salary: "+e.salary);
+        }
+        
+        System.out.println("Sorted By Salary");
+        Collections.sort(empList,new SalaryComparator());
+        for(Employee e : empList)
+        {
+            System.out.println("Name: "+e.name+" Age: "+e.age+" Salary: "+e.salary); 
+        }
+    }
+    
+}
+
+
+
+
+/**********
+
+Output
+-------
+
+debug:
+Enter employee detail ->
+Employee Name:
+Vishali
+Employee Age:
+23
+Employee Salary:
+56000
+Enter employee detail ->
+Employee Name:
+Tamil
+Employee Age:
+40
+Employee Salary:
+70000
+Enter employee detail ->
+Employee Name:
+Hema
+Employee Age:
+25
+Employee Salary:
+53000
+Sorted By Name:
+Name: Hema Age: 25 Salary: 53000.0
+Name: Tamil Age: 40 Salary: 70000.0
+Name: Vishali Age: 23 Salary: 56000.0
+Sorted By Age:
+Name: Vishali Age: 23 Salary: 56000.0
+Name: Hema Age: 25 Salary: 53000.0
+Name: Tamil Age: 40 Salary: 70000.0
+Sorted By Salary
+Name: Hema Age: 25 Salary: 53000.0
+Name: Vishali Age: 23 Salary: 56000.0
+Name: Tamil Age: 40 Salary: 70000.0
+BUILD SUCCESSFUL (total time: 28 seconds)
+
+******/

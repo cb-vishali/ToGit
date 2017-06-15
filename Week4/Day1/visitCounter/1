@@ -1,0 +1,10 @@
+<html>
+    <head>
+        <title>Visit Count</title>
+    </head>
+    <body>
+	    <form method="post" action="counter">
+		    <input type = "submit" value = "counter">
+	    </form>
+    </body>
+</html>

@@ -1,0 +1,251 @@
+
+package servicestation;
+import java.util.*;
+
+class Vehicle
+{
+    String brand,color,service;
+    Vehicle()
+    {
+        
+    }
+    Vehicle(String brand,String color,String service)
+    {
+      this.brand=brand;
+      this.color=color;
+      this.service=service;
+    }
+    
+    int charge;
+    void setServiceCharge(int charge)
+    {
+        this.charge=charge;
+    }
+    
+    String getBrand()
+    {
+        return this.brand;
+    }
+    String getColor()
+    {
+        return this.color;
+    }
+    String getService()
+    {
+        return this.service;
+    }
+    
+    int getServiceCharge()
+    {
+        return this.charge;
+    }
+    
+}
+
+class Car extends Vehicle
+{
+    Car(String brand,String color,String service)
+    {
+        super(brand,color,service);
+    }
+    
+}
+class Bus extends Vehicle
+{
+    Bus(String brand,String color,String service)
+    {
+        super(brand,color,service);
+    }
+    
+}
+class Bike extends Vehicle
+{
+    Bike(String brand,String color,String service)
+    {
+        super(brand,color,service);
+    }
+    
+}
+
+
+
+class Person
+{
+    String name;
+    int age;
+    long contact;
+    Vehicle veh;
+    Scanner sc=new Scanner(System.in);
+    Person()
+    {
+        
+    }
+    Person(String name,int age,long contact)
+    {
+        this.name=name;
+        this.age=age;
+        this.contact=contact;
+    }
+    void setname(String name)
+    {
+        this.name=name;
+    }
+    void setAge(int age)
+    {
+        this.age=age;
+    }
+    void setContact(long contact)
+    {
+        this.contact=contact;
+    }
+    String getName()
+    {
+        return this.name;
+    }
+    int getAge()
+    {
+        return this.age;
+    }
+    long getContact()
+    {
+        return this.contact;
+    }
+    void giveVehicleDetail()
+    {
+        System.out.println("Is it yours a car/bike/bus?");
+        String reply=sc.next();
+        System.out.println("Enter Brand,Color and Service fot your vehicle");
+        String b=sc.next();
+        String c=sc.next();
+        String s=sc.next();
+        if("car".equals(reply)) {
+        veh=new Car(b,c,s);
+        if(veh instanceof Car)
+        veh.setServiceCharge(2000);
+        System.out.println("Calculating your service charge..."+veh.getServiceCharge());
+        } else if ("bike".equals(reply)) {
+        veh=new Bike(b,c,s);
+        if(veh instanceof Bike)
+        veh.setServiceCharge(1000);
+        System.out.println("Calculating your service charge..."+veh.getServiceCharge());
+        }else if("bus".equals(reply)) {
+        veh=new Bus(b,c,s);
+        if(veh instanceof Bus)
+        veh.setServiceCharge(5000);
+        System.out.println("Calculating your service charge..."+veh.getServiceCharge());
+        }else
+        {
+            System.out.print("OOPs...Sorry .. that service is not available here..");
+        }
+        
+    }
+    
+    Vehicle getVehicle()
+    {
+        return veh;
+    }
+    
+}
+class Employee extends Customer
+{
+    Employee(String name,int age,long contact)
+    {
+      super(name,age,contact);  
+    }
+    int EmpId;
+    void setEmpId(int Id)
+    {
+        EmpId=Id;
+    }
+    int getEmpId()
+    {
+        return EmpId;
+    }
+}
+class Customer extends Person
+{
+    Customer()
+    {
+        
+    }
+ Customer(String name,int age,long contact)
+ {
+     super(name,age,contact);
+ }
+}
+
+
+
+
+
+
+class Invoice
+{
+    Invoice()
+    {
+        
+    }
+}
+
+public class ServiceStation {
+
+    
+    public static void main(String[] args) {
+        
+        ArrayList<Object> station=new ArrayList<Object> ();
+        
+        Person E1=new Employee("Vishali",23,948747448);
+        E1.giveVehicleDetail();
+        station.add(E1);
+      //  System.out.println("Name: "+E1.getName()+" Age: "+E1.getAge()+" Contact: "+E1.getContact());
+        Person C1=new Customer("Hema",24,944217448);
+        C1.giveVehicleDetail();
+        station.add(C1);
+      //  System.out.println("Name: "+C1.getName()+" Age: "+C1.getAge()+" Contact: "+C1.getContact());
+        
+        for(int i=0;i<station.size();i++)
+        {
+            if(station.get(i) instanceof Employee)
+            {
+               System.out.println("Name: "+((Employee)station.get(i)).name+" Age: "+((Employee)station.get(i)).age+" Contact: "+((Employee)station.get(i)).contact+" Brand : "+((Employee)station.get(i)).veh.brand+" Color: "+((Employee)station.get(i)).veh.color+" Service : "+((Employee)station.get(i)).veh.service); 
+ 
+          /*     if(station.get(i) instanceof Customer)
+            {
+                System.out.println("I am now a cutomer too.. ");
+            }*/
+          
+            }else
+            if(station.get(i) instanceof Customer)
+            {
+                System.out.println("Name: "+((Customer)station.get(i)).name+" Age: "+((Customer)station.get(i)).age+" Contact: "+((Customer)station.get(i)).contact+" Brand : "+((Customer)station.get(i)).veh.brand+" Color: "+((Customer)station.get(i)).veh.color+" Service : "+((Customer)station.get(i)).veh.service);
+            }
+        }
+        
+        }
+    
+}
+
+
+
+/*******
+Output
+------
+debug:
+Is it yours a car/bike/bus?
+car
+Enter Brand,Color and Service fot your vehicle
+Innova
+Black
+Revamping
+Calculating your service charge...2000
+Is it yours a car/bike/bus?
+bike
+Enter Brand,Color and Service fot your vehicle
+Honda
+Red
+OilService
+Calculating your service charge...1000
+Name: Vishali Age: 23 Contact: 948747448 Brand : Innova Color: Black Service : Revamping
+Name: Hema Age: 24 Contact: 944217448 Brand : Honda Color: Red Service : OilService
+BUILD SUCCESSFUL (total time: 28 seconds)
+**********/

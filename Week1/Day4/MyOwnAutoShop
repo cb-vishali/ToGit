@@ -1,0 +1,106 @@
+
+package myownautoshop;
+
+class car
+{
+   int speed=150;
+   double regularPrice=200000.0;
+   String color="black";
+   car()
+   {
+       
+   }
+    car(int speed,double regPrice,String color)
+   {
+       this.speed=speed;
+       regularPrice=regPrice;
+       this.color=color;
+   } 
+   double getSalePrice()
+   {
+       return regularPrice;
+   }
+}
+class Truck extends car
+{
+    int weight;
+    Truck(int weight)
+    {
+      this.weight=weight;  
+    }
+    double getSalePrice()
+   {
+       double value=super.getSalePrice();
+       if(weight>2000)
+       {
+          return value*(1-(10.0/100));
+       }else
+       {
+          return value*(1-(20.0/100));
+       }
+    }
+}
+class Ford extends car
+{
+    int year;int manufacturerDiscount;
+    Ford(int year,int manfDiscount)
+    {
+        this.year=year;
+        this.manufacturerDiscount=manfDiscount;
+    }
+    double getSalePrice()
+   {
+       double value=super.getSalePrice();
+       return value-manufacturerDiscount;
+   }
+}
+class Sedan extends car
+{
+    int length;
+    Sedan(int length)
+    {
+        this.length=length;
+    }
+    double getSalePrice()
+   {
+       double value=super.getSalePrice();
+       if(length>20)
+       {
+           return value*(1-(5.0/100));
+       }else
+       {
+           return value*(1-(10.0/100));
+       }
+   }
+}
+
+public class MyOwnAutoShop {
+
+    
+    public static void main(String[] args) {
+        
+        car sed=new Sedan(25);
+        System.out.println("Sedan - "+sed.color+" color with "+sed.regularPrice+" regular price but now at "+sed.getSalePrice());
+        car ford=new Ford(2012,20000);
+        System.out.println("Ford - "+ford.color+" color with "+ford.regularPrice+" regular price but now at "+ford.getSalePrice());
+        car truck=new Truck(1500);
+        System.out.println("Truck - "+truck.color+" color with "+truck.regularPrice+" regular price but now at "+truck.getSalePrice());
+        car newCar=new car(160,300000.0,"red");
+        System.out.println("Hey But I can fix my Car rate which is - "+newCar.color+" color as "+newCar.regularPrice+". I can change whenevr I wish..");
+    }
+    
+}
+
+
+
+
+/*******
+output
+------
+debug:
+Sedan - black color with 200000.0 regular price but now at 190000.0
+Ford - black color with 200000.0 regular price but now at 180000.0
+Truck - black color with 200000.0 regular price but now at 160000.0
+Hey But I can fix my Car rate which is - red color as 300000.0. I can change whenevr I wish..
+BUILD SUCCESSFUL (total time: 0 seconds)
+******/

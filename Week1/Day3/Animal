@@ -1,0 +1,60 @@
+
+package animal;
+import java.util.*;
+
+public class Animal {
+
+    private int age,weight;
+    private static int count=0;
+    private String name,sound;
+    public Animal() {
+    System.out.println("Constructor is called...");
+        count++;
+    };
+    public void setValue(String name1,int age1)
+    {
+        name=name1;
+        age=age1;
+    }
+    public int getValue()
+    {
+        return count;
+    }
+    public void makeSound()
+    {
+        System.out.print(name + " is a ");
+        if(age<10){ System.out.print("low noise animal and "); }
+        else if(age>9&&age<20) { System.out.print("Medium noise animal and "); }
+        else { System.out.print("High noise animal and ");}
+    }
+    public void calculateWeight()
+    {
+        if(age<10){ System.out.println("low weight animal.."); }
+        else if(age>9&&age<20) { System.out.println("Medium weight animal.."); }
+        else { System.out.println("High weight animal");}
+    }
+    
+    public static void main(String [] args)
+    {
+        System.out.println("Inside Animal class");
+        Scanner sc=new Scanner(System.in);
+        String yesNo="y";
+        
+        while("y".equals(yesNo)) {
+        Animal ob=new Animal();
+        System.out.println("Enter the name and age of your animal:");
+        ob.name=sc.next();
+        ob.age=sc.nextInt();
+        System.out.println("Analysing sound and Weight for ur animal.....");
+        ob.setValue(ob.name,ob.age);
+        int num=ob.getValue();
+        
+        ob.makeSound();
+        ob.calculateWeight();
+        System.out.println(num+ " animals so far..Do u want to input another animal? (y/n) : ");
+        yesNo=sc.next();
+        }
+            
+    }
+    
+}

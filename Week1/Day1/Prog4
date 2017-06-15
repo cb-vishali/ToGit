@@ -1,0 +1,31 @@
+
+package smallestpower;
+
+import java.util.*;
+/**
+ *
+ * @author cb-vishali
+ */
+
+
+public class SmallestPower {
+
+    public static void main(String[] args) {
+        
+        Scanner sc=new Scanner(System.in);
+        System.out.println("\nEnter x to which power is to be calculated:");
+        int x=sc.nextInt();
+        System.out.println("Enter y which is the immediate lower limit:");
+        int y=sc.nextInt();
+        
+        int res=1;int count =0;
+       
+        while(res<=y)
+        {
+        res*=x;
+        count++;
+        }
+      System.out.println("\nThe power is: "+count);
+    }
+    
+}

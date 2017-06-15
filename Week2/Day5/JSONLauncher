@@ -1,0 +1,51 @@
+package jsonlauncher;
+
+import java.io.*;
+import java.util.*;
+import org.json.simple.*;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+public class JSONLauncher {
+
+    public static void main(String[] args) throws FileNotFoundException, IOException, ParseException {
+
+        JSONParser parser = new JSONParser();
+        JSONObject mainObject = (JSONObject) parser.parse(new FileReader("/Users/cb-vishali/Downloads/students-teachers.json"));
+
+        //main object has two sub-objects Teacher & Student..so create JSONObject for teacher and student
+        JSONObject teacher = (JSONObject) mainObject.get("Teacher");
+        
+
+        JSONObject student = (JSONObject) mainObject.get("Student");
+        
+
+        //teacher object has list of Objects..so access those objects by specifying KEY..
+        String name = teacher.get("Name").toString();
+        System.out.println("Teacher Name : " + name);
+        System.out.println("Teacher ID : " + teacher.get("ID"));
+        System.out.println("Teacher Salary : " + teacher.get("Salary"));
+        System.out.println("Teacher DOJ : " + teacher.get("Date of Joining"));
+       // JSONObject date=(JSONObject) teacher.get("Date of Joining");
+       // System.out.println(date.toJSONString());
+        JSONArray classesTaken = (JSONArray) teacher.get("Classes Taking Care Of");
+        System.out.println("Teacher taking classes : " + classesTaken);
+        System.out.println();
+        
+        //student object has list of objects..so access those objects by specifying KEY..
+        System.out.println("Student Name : " + student.get("Name"));
+        System.out.println("Student ID : " + student.get("ID"));
+        System.out.println("Student std : " + student.get("Std"));
+        System.out.println("Student DOJ : " + student.get("Date of Joining"));
+        JSONArray marks = (JSONArray) student.get("Marks");
+        System.out.println(((JSONObject) marks.get(0)).get("Subject") + " : " + ((JSONObject) marks.get(0)).get("Mark"));
+        System.out.println(((JSONObject) marks.get(1)).get("Subject") + " : " + ((JSONObject) marks.get(0)).get("Mark"));
+        System.out.println(((JSONObject) marks.get(2)).get("Subject") + " : " + ((JSONObject) marks.get(0)).get("Mark"));
+        System.out.println(((JSONObject) marks.get(3)).get("Subject") + " : " + ((JSONObject) marks.get(0)).get("Mark"));
+        System.out.println(((JSONObject) marks.get(4)).get("Subject") + " : " + ((JSONObject) marks.get(0)).get("Mark"));
+
+    }
+
+}

@@ -1,0 +1,44 @@
+
+package filelauncher;
+import java.io.*;
+import java.util.*;
+
+public class FileLauncher {
+
+   
+    public static void main(String[] args) throws FileNotFoundException, IOException {
+        
+        HashMap<String,Integer> map=new HashMap<>();int val=0;
+        
+        File file=new File("/Users/cb-vishali/NetBeansProjects/FileLauncher/src/filelauncher/fromFile");
+        BufferedReader buf=new BufferedReader(new FileReader(file));
+        String line=buf.readLine();
+        while((line)!= null)
+        {
+            if(map.get(line)==null)
+            {
+              val=1;  
+            }
+            else
+            val++;
+            map.put(line, val);
+            line=buf.readLine();
+        }
+        
+        for(String key : map.keySet())
+        {
+            System.out.println(key+" : "+map.get(key));
+        }
+        
+        File output=new File("/Users/cb-vishali/NetBeansProjects/FileLauncher/src/filelauncher/toFile");
+        BufferedWriter buff=new BufferedWriter(new FileWriter(output));
+       
+        for(String key : map.keySet())
+        {
+            buff.write(key+" : "+map.get(key)+"\n");
+            System.out.println(key+" : "+map.get(key));
+        }
+        buff.close();
+    }
+    
+}

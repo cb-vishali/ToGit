@@ -1,0 +1,60 @@
+
+package phonedirectory;
+import java.util.*;
+
+class Person
+{
+    String name;
+    String address;
+    HashMap<String,String> phoneNo;
+    
+    Person(String name,String address,HashMap<String,String> ph)
+    {
+        this.name=name;
+        this.address=address;
+        this.phoneNo=ph;
+    }
+ }
+
+public class PhoneDirectory {
+
+    
+    public static void main(String[] args) {
+        
+        HashMap<String,String> phoneMap=new HashMap<>();
+        HashMap<String,ArrayList<Person>> directory=new HashMap<>();
+        
+       String[] name={"Vishali","Vignes","Hema","Gayathri","Gayathri"};
+       String[] address={"Chennai","Dindigul","Madurai","Coimbatore","Chennai"};
+       String [][] phone = {{"94874474482","978654634","956434567"},{"4874474482","9978654634","8956434567"},{"46874474482","9678654634","9564346567"},{"34874474482","9786546343","9564434567"},{"43874474482","9786354634","7956434567"} };
+       for(int i=0;i<5;i++)
+       {
+         phoneMap.put("Home", phone[i][0]);
+         phoneMap.put("Mobile",phone[i][1]);
+         phoneMap.put("Office", phone[i][2]);
+         Person P=new Person(name[i],address[i],phoneMap);
+         
+         ArrayList values=directory.get(name[i]);
+         if(values==null)
+         {
+             values=new ArrayList();
+             directory.put(name[i], values);
+         }
+         values.add(P);
+             
+         }
+       
+       
+       for(String key : directory.keySet())
+       {
+          
+           ArrayList<Person> val=directory.get(key);
+           for(Person P : val)
+           {
+               System.out.println("Name: "+P.name+" Address: "+P.address+ " PhoneNo: "+P.phoneNo);
+           }
+       }
+       
+    }
+    
+}

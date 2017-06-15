@@ -1,0 +1,104 @@
+package phonedirectoryusingcsv;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.io.*;
+
+class Person {
+
+    String name;
+    String address;
+    HashMap<String, String> phoneNo;
+
+    Person(String name, String address, HashMap<String, String> ph) {
+        this.name = name;
+        this.address = address;
+        this.phoneNo = ph;
+    }
+}
+
+public class PhoneDirectoryUsingCSV {
+
+    public static void generateCSVFile(String location) throws IOException {
+        FileWriter file = new FileWriter(location);
+        file.append("Name");
+        file.append(",");
+        file.append("Address");
+        file.append(",");
+        file.append("Mobile");
+        file.append(",");
+        file.append("Home");
+        file.append(",");
+        file.append("Office");
+        file.append("\n");
+
+        file.append("Vishali");
+        file.append(",");
+        file.append("Chennai");
+        file.append(",");
+        file.append("9487474482");
+        file.append(",");
+        file.append("9442174482");
+        file.append(",");
+        file.append("9442564482");
+        file.append("\n");
+
+        file.append("Anu");
+        file.append(",");
+        file.append("Bangalore");
+        file.append(",");
+        file.append("9447645738");
+        file.append(",");
+        file.append("9657845387");
+        file.append(",");
+        file.append("9645356787");
+        file.append("\n");
+
+        file.flush();
+        file.close();
+    }
+
+    public static void loadIntoCollections(String location) throws FileNotFoundException, IOException {
+        BufferedReader buf = new BufferedReader(new FileReader(location));
+        String line = buf.readLine();
+
+        Person ob = null;
+        HashMap<String, String> phoneMap = new HashMap<>();
+        HashMap<String, ArrayList<Person>> directory = new HashMap<>();
+
+        while (line != null) {
+            System.out.println(line);
+            String[] field = line.split(",");
+            phoneMap.put("Mobile", field[2]);
+            phoneMap.put("Home", field[3]);
+            phoneMap.put("Office", field[4]);
+            ob = new Person(field[0], field[1], phoneMap);
+            ArrayList values = directory.get(field[0]);
+            if (values == null) {
+                values = new ArrayList();
+                directory.put(field[0], values);
+            }
+            values.add(ob);
+            line = buf.readLine();
+        }
+
+        for (String key : directory.keySet()) {
+
+            ArrayList<Person> val = directory.get(key);
+            for (Person P : val) {
+                System.out.println("Name: " + P.name + " Address: " + P.address + " PhoneNo: " + P.phoneNo);
+            }
+        }
+
+    }
+
+    public static void main(String[] args) throws IOException {
+
+        // String[] name = {"Vishali", "Vignes", "Hema", "Gayathri", "Gayathri"};
+        // String[] address = {"Chennai", "Dindigul", "Madurai", "Coimbatore", "Chennai"};
+        // String[][] phone = {{"94874474482", "978654634", "956434567"}, {"4874474482", "9978654634", "8956434567"}, {"46874474482", "9678654634", "9564346567"}, {"34874474482", "9786546343", "9564434567"}, {"43874474482", "9786354634", "7956434567"}};
+        generateCSVFile("/Users/cb-vishali/personalDetails.csv");
+        loadIntoCollections("/Users/cb-vishali/personalDetails.csv");
+
+    }
+}

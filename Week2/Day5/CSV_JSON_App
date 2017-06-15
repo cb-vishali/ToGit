@@ -1,0 +1,151 @@
+package csv_json_app;
+
+import java.io.*;
+import java.util.*;
+import org.apache.commons.io.*;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+public class CSV_JSON_App {
+
+    public static void generateCSVFile(String srcLoc) throws IOException {
+        FileWriter file = new FileWriter(srcLoc);
+
+        file.append("Customer ID");
+        file.append(",");
+        file.append("Subscription ID");
+        file.append(",");
+        file.append("Invoice Number");  //change to INVOICE ID
+        file.append(",");
+        file.append("Invoice Date");
+        file.append(",");
+        file.append("Start Date");
+        file.append(",");
+        file.append("Amount");
+        file.append(",");
+        file.append("Status");
+        file.append(",");
+        file.append("Paid On");
+        file.append(",");
+        file.append("Next Retry");
+        file.append(",");
+        file.append("Refunded Amount");
+        file.append(",");
+        file.append("Recurring");
+        file.append(",");
+        file.append("First Invoice");
+        file.append(",");
+        file.append("Customer First Name");
+        file.append(",");
+        file.append("Customer Last Name");
+        file.append(",");
+        file.append("Customer Email");
+        file.append(",");
+        file.append("Customer Company");    // Make the above 4 details as "Customer Details"
+        file.append(",");
+        file.append("Tax Total");
+
+        file.append("\n");
+
+        file.append("Cust_001");
+        file.append(",");
+        file.append("Sub_001");
+        file.append(",");
+        file.append("Inv_001");
+        file.append(",");
+        file.append("2015-05-25T10:55:22.820Z");
+        file.append(",");
+        file.append("2015-05-25T10:55:22.820Z");
+        file.append(",");
+        file.append("1025"); //change to 10.25
+        file.append(",");
+        file.append("Paid");
+        file.append(",");
+        file.append("2015-05-25T10:55:22.820Z");
+        file.append(",");
+        file.append("55:22.820Z");   // Make it as empty
+        file.append(",");
+        file.append("56");  // change to 5.6
+        file.append(",");
+        file.append("TRUE");
+        file.append(",");
+        file.append("FALSE");
+        file.append(",");
+        file.append("John");
+        file.append(",");
+        file.append("Doe");
+        file.append(",");
+        file.append("john@test.com");
+        file.append(",");
+        file.append("My BigCamp");
+        file.append(",");              // {"First Name" : "John", "Last Name" : "Doe", "Email" : "john@test.com", "Company" : "My BigCamp"}					
+        file.append("125");  // change to 1.25
+
+        file.flush();
+        file.close();
+    }
+
+    public static void accessCSV_JSONFile(String csvLocation) throws FileNotFoundException, IOException, ParseException {
+        BufferedReader buf = new BufferedReader(new FileReader(csvLocation));
+        String line = buf.readLine();
+
+        JSONParser parser = new JSONParser();
+        JSONObject ob = (JSONObject) parser.parse(new FileReader("/Users/cb-vishali/NetBeansProjects/CSV_JSON_App/src/csv_json_app/config.json"));
+        String numberTOID = ob.get("Invoice Number").toString();
+        String seperateInfoToSingle = ob.get("Customer info").toString();
+        String firstLastMailCmpy = ob.get("Details").toString();
+        String divideNo = ob.get("n").toString();
+
+        while (line != null) {
+            String[] tokens = line.split(",");
+            for (int i = 0; i < tokens.length; i++) {
+                if("Invoice Number".equals(tokens[i]))
+                {
+                   tokens[i]=numberTOID;
+                } 
+                else if("Customer First Name".equals(tokens[i]))
+                {
+                    tokens[i]=seperateInfoToSingle;
+                    System.out.println(i + " : " + tokens[i]);
+                    while(i+4<tokens.length)
+                    {
+                    tokens[i+1]=tokens[i+4];
+                    i++;
+                    }
+                    tokens[i+1]=tokens[i+2]=tokens[i+3]=null;
+                   // int cust=i;
+                }else if("John".equals(tokens[i]))
+                {
+                    tokens[i]=firstLastMailCmpy;
+                    System.out.println(i + " : " + tokens[i]);
+                    while(i+4<tokens.length)
+                    {
+                    tokens[i+1]=tokens[i+4];
+                    i++;
+                    }
+                    tokens[i+1]=tokens[i+2]=tokens[i+3]=null;
+                    
+                   // i=i+4;
+                }
+                System.out.println(i + " : " + tokens[i]);
+            }
+            line = buf.readLine();
+        }
+        
+    }
+
+    public static void main(String[] args) throws IOException, FileNotFoundException, ParseException {
+//If you do this.. then you can understand better..
+//generateCSVFile();       
+//accessCSVFile();
+//generateJSONFile();
+//accessJSONFile();
+//createNEWCSVFile();
+        generateCSVFile("/Users/cb-vishali/sourceCSV_JSONFile.csv");
+        accessCSV_JSONFile("/Users/cb-vishali/sourceCSV_JSONFile.csv");
+
+    }
+
+}

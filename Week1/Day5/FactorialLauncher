@@ -1,0 +1,67 @@
+
+package factoriallauncher;
+
+class Factorial
+{
+    int lowerLimit,upperLimit;
+    Factorial(int low,int high)
+    {
+        lowerLimit=low;
+        upperLimit=high;
+    }
+        
+    void Iterator()
+    {
+        
+    }
+    
+    //void toString()
+    class Iterator
+    {
+        int calculate(int n)
+        {
+            if(n==1)
+                return 1;
+            else
+                return (n*calculate(n-1));
+        }
+    }
+    
+    void access()
+    {
+        Iterator it=new Iterator();
+        int val=0;
+        for(int i=lowerLimit;i<upperLimit;i++)
+        {
+        val=it.calculate(i);
+        System.out.print(val+",");
+        }
+        val=it.calculate(upperLimit);
+        System.out.print(val);
+        System.out.println();
+    }
+}
+
+public class FactorialLauncher {
+
+    
+    public static void main(String[] args) {
+       
+        Factorial fact=new Factorial(3,6);
+        fact.access();
+    }
+    
+}
+
+
+
+
+/*********
+
+Output
+------
+debug:
+6,24,120,720
+BUILD SUCCESSFUL (total time: 0 seconds)
+
+*****/

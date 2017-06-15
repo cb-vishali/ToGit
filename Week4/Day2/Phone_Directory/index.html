@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+input[type=text], select {
+    width: 48%;
+    padding: 12px 20px;
+    margin: 8px 2px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=submit] {
+    width: 80%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 50px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+div {
+    position: absolute;
+      margin: auto;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width : 50%;
+      height:85%;
+      background-color: pink;
+      border-radius: 20px;
+      padding: 20px;
+}
+/*div {
+    width: 35%;	
+    border-radius: 20px;
+    background-color: orange;
+    padding: 20px;
+}*/
+</style>
+	</head>
+<body>
+	<div>
+             <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Phone Directory</h1>
+		<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Save Contact</h2>
+
+	<form action="SaveDetails" method="post">
+	<input type = "text" name = "fname" placeholder = "First Name"/>
+	<input type = "text" name = "lname" placeholder = "Last Name" /></br></br>
+	<input type = "text" name = "address" placeholder = "Address Line 1" />
+	<input type = "text" name = "next-address" placeholder = "Address Line 2" /></br></br>
+        <input type = "text" name = "city" placeholder = "City" />
+	<select name="state">
+    <option value="TamilNadu">TamilNadu</option>
+    <option value="Kerala">Kerala</option>
+    <option value="Karnataka">Karnataka</option>
+    <option value="Assam">Assam</option>
+  </select>
+  </br></br>
+	<input type = "text" name = "zip" placeholder = "Zip" />
+       <select name="country">
+    <option value="India">India</option>
+    <option value="United States">United States</option>
+    <option value="Russia">Russia</option>
+    <option value="China">China</option>
+  </select>
+  </br></br>	
+  <input type = "text" name = "work" placeholder = "Work number" />
+        <input type = "text" name = "mobile" placeholder = "Mobile number"/></br></br>  
+	<input type = "text" name = "home" placeholder = "Home number" /></br></br>
+	<input type = "submit" value = "Save Details" />
+	</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+input[type=text], select {
+    width: 48%;
+    padding: 12px 20px;
+    margin: 8px 2px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=submit] {
+    width: 80%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 50px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+div {
+    position: absolute;
+      margin: auto;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width : 40%;
+      height:40%;
+      background-color: pink;
+      border-radius: 20px;
+      padding: 20px;
+}
+/*div {
+    width: 35%;	
+    border-radius: 20px;
+    background-color: orange;
+    padding: 20px;
+}*/
+</style>
+	</head>
+<body>
+	<div>
+             <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Phone Directory</h1>
+		<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contact Info</h2>
+
+	<form action="viewDetails" method="post">
+	<select name="viewBy">
+		<option value="All">All</option>
+    <option value="fname">fname</option>
+    <option value="lname">lname</option>
+    <option value="city">city</option>
+    <option value="state">state</option>
+    <option value="country">country</option>
+    <option value="zip">zip</option>
+    <option value="work">work</option>
+    <option value="mobile">mobile</option>
+    <option value="home">home</option>
+  </select>
+  </br></br>
+  <input type = "text" name = "var" placeholder = "Enter the value" />
+  </br></br>	
+	<input type = "submit" value = "View" />
+	</form>
+	</div>
+</body>
+</html>

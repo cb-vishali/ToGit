@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+input[type=text], select {
+    width: 48%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=password], select {
+    width: 48%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+div {
+    position: absolute;
+      margin: auto;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width : 40%;
+      height:55%;
+      background-color: orange;
+      border-radius: 20px;
+      padding: 20px;
+}
+/*div {
+    width: 35%;	
+    border-radius: 20px;
+    background-color: orange;
+    padding: 20px;
+}*/
+</style>
+	</head>
+<body>
+	<div>
+             <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Space Portal</h1>
+		<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SignUp</h2>
+
+	<form action="CreateAccount" method="post">
+	<input type = "text" name = "fname" placeholder = "First Name"/>
+	<input type = "text" name = "lname" placeholder = "Last Name" /></br></br>
+	<input type = "text" name = "email" placeholder = "Email" />
+
+
+	<input type = "text" name = "re-email" placeholder = "Confirm Email" /></br></br>
+	<input type = "password" name = "password" placeholder = "Password" />
+	<input type = "password" name = "re-password" placeholder = "Confirm Password"/></br></br>  
+	<input type = "submit" value = "Create Account" />
+	</form>
+	</div>
+</body>
+</html>

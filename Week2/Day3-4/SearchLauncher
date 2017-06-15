@@ -1,0 +1,29 @@
+package searchlauncher;
+
+import java.io.BufferedReader;
+import java.io.*;
+
+public class SearchLauncher {
+
+    public static void main(String[] args) throws FileNotFoundException, IOException {
+
+        File file = new File("/Users/cb-vishali/NetBeansProjects/SearchLauncher/src/searchlauncher/searchFile");
+        BufferedReader buf = new BufferedReader(new FileReader(file));
+
+        String line = buf.readLine(); String searchWord="under";int count=0;
+        while(line!=null)
+        {
+            count++;
+            if(line.contains(searchWord))
+            {
+               int len=searchWord.length();
+               int index=line.indexOf(searchWord);len=len+index;
+               System.out.println(count+" : "+index+" , "+len);
+               break;
+            }
+            line=buf.readLine();
+        }
+        
+    }
+
+}

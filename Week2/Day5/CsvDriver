@@ -1,0 +1,78 @@
+package csvdriver;
+
+import java.io.*;
+import java.util.*;
+import org.apache.commons.io.*;
+
+public class CsvDriver {
+
+    public static void generateCSVFile(String srcLoc) throws IOException {
+        FileWriter file = new FileWriter(srcLoc);
+
+        file.append("ID.No");
+        file.append(",");
+        file.append("Name");
+        file.append("\n");
+
+        file.append("1");
+        file.append(",");
+        file.append("Vishali");
+        file.append("\n");
+
+        file.append("2");
+        file.append(",");
+        file.append("Hemzz");
+        file.append("\n");
+
+        file.append("3");
+        file.append(",");
+        file.append("Gayathri");
+        file.append("\n");
+
+        file.append("3");
+        file.append(",");
+        file.append("Gayathri");
+        file.append("\n");
+
+        file.flush();
+        file.close();
+    }
+
+    public static void copyCSVFile(String srcLoc) throws FileNotFoundException, IOException {
+        BufferedReader buf = new BufferedReader(new FileReader(srcLoc));
+
+        Map<String, String> map = new HashMap<>();
+        String line = buf.readLine();
+
+        while (line != null) {
+            int index = line.indexOf(",");
+            String id = line.substring(0, index);
+            String name = line.substring(index + 1);
+            map.put(id, name);
+            line = buf.readLine();
+
+        }
+
+        FileWriter newFile = new FileWriter("/Users/cb-vishali/destintionCSV.csv");
+        
+        for (String id : map.keySet()) {
+            System.out.println(id + " : " + map.get(id));
+            newFile.append(id);
+            newFile.append(",");
+            newFile.append(map.get(id));
+            newFile.append("\n");
+        }
+
+        newFile.flush();
+        newFile.close();
+
+    }
+
+    public static void main(String[] args) throws IOException {
+
+        generateCSVFile("/Users/cb-vishali/sourceCSV.csv");
+        copyCSVFile("/Users/cb-vishali/sourceCSV.csv");
+
+    }
+
+}

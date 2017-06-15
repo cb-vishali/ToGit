@@ -1,0 +1,36 @@
+
+package arraywords;
+import java.util.*;
+
+public class ArrayWords {
+
+    
+    public static void main(String[] args) {
+        
+        
+        
+       Map<Integer,Set> map = new HashMap<>();
+       
+        String [] name = {"Apple","Orange","Banana","Kiwi","Mango"};
+        
+        for(String n : name)
+        {
+            int len=n.length();
+            Set values=map.get(len);
+            if(values==null)
+            {
+                values = new HashSet<>();
+                map.put(len, values);
+            }
+            values.add(n);
+         }
+        
+        
+        for(Integer index : map.keySet())
+        {
+            System.out.println(index+" : "+map.get(index));
+        }
+        
+     }
+    
+}

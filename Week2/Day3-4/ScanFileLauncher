@@ -1,0 +1,46 @@
+package scanfilelauncher;
+
+import java.io.*;
+import java.util.*;
+
+public class ScanFileLauncher {
+
+    public static void main(String[] args) throws IOException {
+
+        // Set<String> extensions = new HashSet<>();int i=0;
+        Map<String, Integer> map = new HashMap<>();
+
+        File directory = new File("/Users/cb-vishali/NetBeansProjects/FileLauncher/src/filelauncher");
+        File[] arr = directory.listFiles();
+        for (File f : arr) {
+            if (f.isFile()) {
+                String name = f.getName();
+                int index = name.lastIndexOf(".");
+                String ext = name.substring(index);
+
+                Integer values = map.get(ext);
+
+                if (values == null) {
+
+                    values = 1;
+
+                    map.put(ext, values);
+                } else {
+
+                    values++;
+
+                    map.put(ext, values);
+                }
+
+            } else if (f.isDirectory()) {
+
+            }
+        }
+
+        for (String s : map.keySet()) {
+            System.out.println(s + " : " + map.get(s));
+        }
+
+    }
+
+}

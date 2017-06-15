@@ -1,0 +1,44 @@
+
+package simple_compoundintr;
+import java.util.*;
+class Simple
+{
+   int p,n,r,si;
+   int simpleCalc() {
+   System.out.println("Enter principal amt,no.of.yrs,rate of interest: ");
+   Scanner ob=new Scanner(System.in);
+   p=ob.nextInt();
+   n=ob.nextInt();
+   r=ob.nextInt();
+   si=(p*n*r)/100;
+   return si;
+   }
+}
+
+class Compound
+{
+    int p,n;double r,ci; ;
+    double compoundCalc() {
+    System.out.println("Enter principal amt,no.of.years,rate of interest: ");
+    Scanner ob=new Scanner(System.in);
+    p=ob.nextInt();
+    n=ob.nextInt();
+    r=ob.nextInt();
+    ci=(p*(Math.pow((1+(r/100)),n)))-p;
+    return ci;
+    }
+}
+
+public class Simple_CompoundIntr {
+
+   
+    public static void main(String[] args) {
+        
+        Simple simp=new Simple();
+        System.out.println("Simple Interest amt: " + simp.simpleCalc());
+        Compound comp=new Compound();
+        System.out.println("Compound Interest amt: "+ comp.compoundCalc());
+        
+    }
+    
+}

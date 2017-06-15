@@ -1,0 +1,34 @@
+
+package prefixwords;
+import java.util.*;
+
+public class PrefixWords {
+
+   
+    public static void main(String[] args) {
+       
+        String [] name = {"JonSmith","JoeNavin","JonSena","JoeSmith","Hrithik","Abisheka","Vinay"};
+        
+        Map<String,Set> map = new TreeMap<>();
+        
+        for(String n : name)
+        {
+            String prefix=n.substring(0, 3);
+            Set values=map.get(prefix);
+            if(values==null)
+            {
+                values=new HashSet<>();
+                map.put(prefix, values);
+            }
+            values.add(n);
+        }
+        
+        
+        for(String key : map.keySet())
+        {
+            System.out.println(key+" : "+map.get(key));
+;        }
+        
+    }
+    
+}

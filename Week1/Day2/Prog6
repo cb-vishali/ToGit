@@ -1,0 +1,50 @@
+
+package smallestlargestno;
+import java.util.*;
+/**
+ *
+ * @author cb-vishali
+ */
+public class SmallestLargestNo {
+
+    public static void main(String[] args) {
+        
+        int[] arr=new int[20];
+        System.out.println("Enter no.of.elements:");
+        Scanner ob=new Scanner(System.in);
+        int n=ob.nextInt();
+        System.out.println("Enter "+n+" elements:");
+        for(int i=0;i<n;i++)
+        {
+           arr[i]=ob.nextInt();
+        }
+        int temp;
+        for(int i=0;i<1;i++)
+        {
+            for(int j=1;j<n;j++)
+            {
+                if(arr[i]<arr[j]){
+                  temp=arr[i];  
+                  arr[i]=arr[j];
+                  arr[j]=temp;
+                }
+            }
+            System.out.println("Largest: "+arr[i]);
+        }
+        for(int i=0;i<1;i++)
+        {
+            for(int j=1;j<n;j++)
+            {
+                if(arr[i]>arr[j]){
+                  temp=arr[i];  
+                  arr[i]=arr[j];
+                  arr[j]=temp;
+                }
+            }
+            System.out.println("Smallest: "+arr[i]);
+        }
+         
+        
+    }
+    
+}

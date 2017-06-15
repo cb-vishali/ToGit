@@ -1,0 +1,99 @@
+
+package mobilelauncher;
+import java.util.*;
+
+class Mobile
+{
+    Scanner sc=new Scanner(System.in);
+     int charge;String name;
+     interface MobileDetail
+             {
+                  void setRemCharge(int charge);
+                  void setName(String name);
+                  String getName();
+                  int getRemCharge();
+             }
+     
+    void access()
+    {
+       // FirstMobile first=new FirstMobile()
+        MobileDetail mob1=new MobileDetail()
+        {
+            public void setRemCharge(int charge)
+            {
+                Mobile.this.charge=charge;
+            }
+            public void setName(String name)
+            {
+                Mobile.this.name=name;
+            }
+            
+            public String getName()
+            {
+             return Mobile.this.name;   
+            }
+            public int getRemCharge()
+            {
+                return Mobile.this.charge;
+            }
+            
+        };
+        
+        System.out.println("Enter mobile Name:");
+        name=sc.next();
+        System.out.println("How much Charge is remaining?");
+        charge=sc.nextInt();
+        mob1.setName(name);
+        mob1.setRemCharge(charge);
+    
+    }
+    
+}
+
+public class MobileLauncher {
+
+   
+    public static void main(String[] args) {
+       
+        Mobile[] ob=new Mobile[3];
+        ArrayList<Mobile> MobileList=new ArrayList<Mobile> ();
+        
+       for(int i=0;i<2;i++)
+       {
+       ob[i]=new Mobile();
+       ob[i].access();
+       MobileList.add(ob[i]);
+       }
+       
+       
+       for(int i=0;i<2;i++)
+       {
+           System.out.println("NAME: "+(MobileList.get(i)).name+" ; CHARGE REMAINING: "+(MobileList.get(i)).charge);
+       }
+       }
+    }
+    
+
+
+
+
+
+/*********
+
+output
+-------
+
+debug:
+Enter mobile Name:
+Iphone
+How much Charge is remaining?
+34
+Enter mobile Name:
+Samsung
+How much Charge is remaining?
+45
+NAME: Iphone ; CHARGE REMAINING: 34
+NAME: Samsung ; CHARGE REMAINING: 45
+BUILD SUCCESSFUL (total time: 10 seconds)
+
+********/

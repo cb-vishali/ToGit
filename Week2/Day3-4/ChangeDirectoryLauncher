@@ -1,0 +1,26 @@
+package changedirectorylauncher;
+
+import org.apache.commons.io.*;
+
+import java.io.*;
+
+public class ChangeDirectoryLauncher {
+
+    public static void main(String[] args) throws IOException {
+
+        File srcDir = new File("/Users/cb-vishali/NetBeansProjects/FileLauncher/src/filelauncher");
+        File[] fileList = srcDir.listFiles();
+        File dstDir = new File("/Users/cb-vishali/NetBeansProjects/FileLauncher/src/dstdirect");
+        FileUtils.copyDirectoryToDirectory(srcDir, dstDir);
+
+        File srcfile = new File("/Users/cb-vishali/NetBeansProjects/FileLauncher/src/filelauncher");
+        File[] files = srcfile.listFiles();
+
+        File dstDirectory = new File("/Users/cb-vishali/NetBeansProjects/FileLauncher/src/dstDirectory");
+
+        for (File f : files) {
+            FileUtils.copyFileToDirectory(f, dstDir);
+        }
+    }
+
+}

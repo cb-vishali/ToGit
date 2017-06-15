@@ -1,0 +1,41 @@
+package conditionalstatement;
+
+import java.util.*;
+/*
+ *
+ * @author cb-vishali
+ */
+public class ConditionalStatement {
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("\nEnter your favourite number:");
+        int no=sc.nextInt();
+        if((no<=5)&&(no>=1))
+            System.out.println("\nYou win the lucky draw (1-5)");
+        else
+            System.out.println("\nOOPs..!!Better luck next time");
+        System.out.println("\nEnter your fav color:");
+        String col=sc.next();
+        switch(col) {
+            case "black":
+                System.out.println("Thats great");
+                break;
+            case "blue":
+                System.out.println("Cool");
+                break;
+            case "white":
+                System.out.println("Nice choice");
+                break;
+            case "red":
+                System.out.println("Terrible");
+                break;
+            case "yellow":
+                System.out.println("Good choice");
+                break;
+            default:
+                System.out.println("Enter some good color plzz");
+        }
+    }
+    
+}

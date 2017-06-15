@@ -1,0 +1,80 @@
+
+package book;
+        
+public class Book {
+
+        private String name;
+        private Double price;
+        private int QtyinStock=0;private int count=0;
+        private Author[] authName=new Author[10];
+        public Book(String Bookname,Author author,Double Price,int Qty)
+        {
+            name=Bookname;
+            price=Price;
+            QtyinStock=Qty;
+            authName[count]=author;
+        }
+        public void setPrice(Double Price)
+        {
+            price=Price;
+        }
+        public void setQtyInStock(int Qty)
+        {
+            QtyinStock=Qty;
+        }
+        public String toDisplay()
+        {
+           
+        return name+" by  "+authName[count].toDisplay()+"\n"+"Price: "+price+"\n"+"No.of.books.available: "+QtyinStock;    
+        }
+        
+        public String getName()
+        {
+            return name;
+        }
+        public Double getPrice()
+        {
+            return price;
+        }
+        public int getQty()
+        {
+            return QtyinStock;
+        }
+        public Author[] getAuthor()
+        {
+            return authName;
+        }
+        
+        public void printAuthor()
+        {
+            System.out.println(authName[count].toDisplay());
+        }
+        public void addAuthor(Author author)
+        {
+            authName[count]=author;
+            count++;
+        }
+        
+        public static void main(String[] args) {
+        
+            
+        Author auth1=new Author("Vishali","riodinto@gmail.com","F");    
+        Book book1=new Book("Pride&Prejudice",auth1,2400.00,20);
+        String disp=book1.toDisplay();
+        System.out.println(disp);
+        book1.setPrice(2500.00);
+        book1.setQtyInStock(10);
+        disp=book1.toDisplay();
+        System.out.println(disp);
+        
+        
+        auth1.setMail("vishalikknet@gmail.com");
+        disp=book1.toDisplay();
+        System.out.println(disp);
+        }
+    
+}
+
+
+
+
